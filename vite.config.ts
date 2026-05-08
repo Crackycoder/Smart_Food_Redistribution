@@ -9,4 +9,17 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          leaflet: ['leaflet', 'react-leaflet'],
+          vendor: ['react', 'react-dom', '@tanstack/react-router', '@tanstack/react-query'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-tabs', '@radix-ui/react-dropdown-menu'],
+          charts: ['recharts'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });
